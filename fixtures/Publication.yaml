@@ -4,3 +4,4 @@ App\Entity\Publication:
     createdAt: '<dateTimeBetween("-3 years", "now")>'
     title: "<word()>"
     content: "<sentence(30)>"
+    comment: "@comment*"
