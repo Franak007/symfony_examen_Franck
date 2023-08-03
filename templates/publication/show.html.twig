@@ -3,32 +3,37 @@
 {% block title %}Publication{% endblock %}
 
 {% block body %}
-    <h1>Publication</h1>
+    <h1>{{ publication.title }}</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ publication.id }}</td>
+                <th>Créé le : </th>
+                <td>{{ publication.createdAt ? publication.createdAt|date('d-m-Y') : '' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ publication.createdAt ? publication.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
+                <th>Titre</th>
                 <td>{{ publication.title }}</td>
             </tr>
             <tr>
-                <th>Content</th>
+                <th>Contenu</th>
                 <td>{{ publication.content }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_publication_index') }}">back to list</a>
+    <h3>Nombre de commentaires : {{ publication.comments|length }}</h3>
+    <ul>
+        {% for comment in publication.comments %}
+            <li>{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
 
-    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
+    <a href="{{ path('app_comment_new', {'id': publication.id}) }}">Ajouter un commentaire</a>
+    <br>
+    <a href="{{ path('app_publication_index') }}">Retour à la liste</a>
+    <br>
+    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">Modifier</a>
 
     {{ include('publication/_delete_form.html.twig') }}
 {% endblock %}

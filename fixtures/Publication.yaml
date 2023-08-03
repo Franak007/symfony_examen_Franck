@@ -1,7 +1,6 @@
 #Publication.yaml
 App\Entity\Publication:
-  publication{0..1500}:
+  publication{0..150}:
     createdAt: '<dateTimeBetween("-3 years", "now")>'
     title: "<word()>"
     content: "<sentence(30)>"
-    comment: "@comment*"

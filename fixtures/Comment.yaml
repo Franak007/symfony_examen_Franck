@@ -1,6 +1,6 @@
 #Comment.yaml
 App\Entity\comment:
-  comment{0..4000}:
+  comment{0..500}:
     createdAt: '<dateTimeBetween("-3 years", "now")>'
     content: "<sentence(30)>"
     publication: "@publication*"
